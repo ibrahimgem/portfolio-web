@@ -45,17 +45,19 @@ const AchievementsSection: React.FC = () => {
           >
             <h2 className="text-white text-4xl font-bold flex flex-row">
               {achievement.prefix && <span>{achievement.prefix}</span>}
-              <AnimatedNumbers
-                animateToNumber={parseInt(achievement.value.replace(/,/g, ""), 10)}
-                locale="en-US"
-                className="text-white text-4xl font-bold"
-                configs={(i) => ({
-                  mass: 1,
-                  friction: 100,
-                  tension: 140 * (i + 1),
-                })}
-                includeComma
-              />
+              {/* Wrapping the AnimatedNumbers in a div to apply the class */}
+              <div className="text-white text-4xl font-bold">
+                <AnimatedNumbers
+                  animateToNumber={parseInt(achievement.value.replace(/,/g, ""), 10)}
+                  locale="en-US"
+                  configs={(i) => ({
+                    mass: 1,
+                    friction: 100,
+                    tension: 140 * (i + 1),
+                  })}
+                  includeComma
+                />
+              </div>
               {achievement.postfix && <span>{achievement.postfix}</span>}
             </h2>
             <p className="text-[#ADB7BE] text-base">{achievement.metric}</p>
